@@ -52,19 +52,18 @@ Utiliza **Gemini gemini-2.0-flash** para crear el contenido y se conecta con la 
    cd syllabus-streamlit
 
 2. **Instalar dependencias**
-    ```bash
+
 pip install -r requirements.txt
 
 3. **Subir los secretos en streamlit**
-    ```bash
-GEMINI_API_KEY = "TU_API_KEY"
-GOOGLE_OAUTH_CLIENT_ID = "xxxxxxxxxx.apps.googleusercontent.com"
-GOOGLE_OAUTH_CLIENT_SECRET = "xxxxxxxxxxxxxxxxxxxx"
-GOOGLE_OAUTH_REDIRECT_URI = "http://localhost:8501/oauth2callback"
+   
+* GEMINI_API_KEY = "TU_API_KEY"
+* GOOGLE_OAUTH_CLIENT_ID = "xxxxxxxxxx.apps.googleusercontent.com"
+* GOOGLE_OAUTH_CLIENT_SECRET = "xxxxxxxxxxxxxxxxxxxx"
+* GOOGLE_OAUTH_REDIRECT_URI = "http://localhost:8501/oauth2callback"
 
 4. **Probar en Streamlit**
 Iniciar sesión con una cuenta de @datarebels.mx
 
 
-_Creado por Melisa Lozano — @melisapurpura 💜 Desarrolladora y diseñadora de productos de datos en Data Rebels.
-_
+_Creado por Melisa Lozano — @melisapurpura 💜 Desarrolladora y diseñadora de productos de datos en Data Rebels_
