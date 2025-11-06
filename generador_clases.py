@@ -86,7 +86,10 @@ def generar_clase_con_prompt(clase_info: dict, perfil_estudiante: str, industria
 
 def generar_documento_clases_completo(nombre_doc: str, clases_info: list, perfil_estudiante: str, industria: str) -> list:
     docs_links = []
-    partes = [clases_info[:6], clases_info[6:]]
+    # Dividir automáticamente las clases en partes de máximo 6 (para evitar límites de API)
+    max_por_doc = 6
+    partes = [clases_info[i:i + max_por_doc] for i in range(0, len(clases_info), max_por_doc)]
+
 
     for parte_idx, parte in enumerate(partes, 1):
         # Crear documento vacío

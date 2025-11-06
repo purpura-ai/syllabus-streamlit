@@ -21,6 +21,16 @@ publico = st.text_area("Público objetivo (Agregar Industria)")
 objetivos_raw = st.text_area("Objetivos del curso")
 siguiente = st.text_input("Nombre del siguiente curso sugerido", value="N/A")
 
+# 🔢 Nuevo input: número de clases
+num_clases = st.number_input(
+    "Número de clases del curso",
+    min_value=4,
+    max_value=24,
+    value=12,
+    step=2,
+    help="Selecciona cuántas clases tendrá el curso (afectará el outline y las clases generadas)."
+)
+
 # ✅ NUEVO BLOQUE: Mostrar links si ya se generaron previamente
 if "link_syllabus" in st.session_state and "link_outline" in st.session_state:
     st.success("✅ Syllabus y Outline previamente generados.")
@@ -46,7 +56,7 @@ if st.button("Generar Syllabus y Outline"):
         try:
             perfil_ingreso, objetivos_mejorados, perfil_egreso, outline, \
             titulo1, desc1, titulo2, desc2, titulo3, desc3 = generar_datos_generales(
-                nombre, nivel, publico, student_persona, siguiente, objetivos_raw
+                nombre, nivel, publico, student_persona, siguiente, objetivos_raw, num_clases
             )
 
             link_syllabus = generar_syllabus_completo(
@@ -62,6 +72,7 @@ if st.button("Generar Syllabus y Outline"):
             # ✅ Guardar los links para mantenerlos visibles
             st.session_state["link_syllabus"] = link_syllabus
             st.session_state["link_outline"] = link_outline
+            st.session_state["num_clases"] = num_clases  # ✅ persistir el número
 
             st.success("✅ Syllabus y Outline generados correctamente.")
             col1, col2 = st.columns(2)
@@ -73,17 +84,19 @@ if st.button("Generar Syllabus y Outline"):
         except Exception as e:
             st.error(f"Ha ocurrido un error durante la generación: {str(e)}")
             st.info("Verifica que todos los campos estén completos y que la plantilla tenga los placeholders correctos.")
-            st.info("Placeholders necesarios en la plantilla: {{titulo_primer_objetivo_secundario}}, {{descripcion_primer_objetivo_secundario}}, etc.")
+            
 
 # === Generar clases completas ===
 st.markdown("---")
 st.subheader("📚 Generar contenido completo de clases")
+st.info(f"El curso seleccionado tiene **{num_clases} clases**.")
 
 link_outline_guardado = st.session_state.get("link_outline", None)
+num_clases_guardado = st.session_state.get("num_clases", num_clases)
 
 if st.button("Generar clases desde Outline creado"):
     if link_outline_guardado:
-        with st.spinner("Generando documento con las 12 clases completas..."):
+        with st.spinner("Generando documento con las el contenido de las clases completas..."):
             try:
                 clases_info = leer_outline_desde_sheets(link_outline_guardado)
                 links_docs = generar_documento_clases_completo(

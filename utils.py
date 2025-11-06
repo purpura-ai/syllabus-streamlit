@@ -110,7 +110,7 @@ def call_gemini(prompt: str) -> str:
 # 🧠 PROMPTING Y LÓGICA DE GENERACIÓN
 # =========================
 @st.cache_data(show_spinner=False)
-def generar_datos_generales(nombre_del_curso, nivel, publico, student_persona, siguiente, objetivos_raw):
+def generar_datos_generales(nombre_del_curso, nivel, publico, student_persona, siguiente, objetivos_raw, num_clases):
     prompt = f"""
     Eres un experto en diseño instruccional y un tutor experimentado, aplicando los principios de la ciencia del aprendizaje
     para crear experiencias educativas efectivas y atractivas. Tu objetivo es generar un syllabus y outline
@@ -149,7 +149,10 @@ def generar_datos_generales(nombre_del_curso, nivel, publico, student_persona, s
     [DESCRIPCION_TERCER_OBJETIVO_SECUNDARIO]
     ...
 
-    El outline debe incluir exactamente 12 clases (4 por semana durante 3 semanas) y estar en formato de tabla Markdown con estas columnas:
+    El outline debe incluir exactamente {num_clases} clases. 
+    Organízalas en semanas lógicas (por ejemplo, 4 por semana si es 12 en total). 
+    Debe estar en formato de tabla Markdown con estas columnas:
+
 
     | Clase | Título | Conceptos Clave | Objetivo 1 | Objetivo 2 | Objetivo 3 | Descripción |
     """
