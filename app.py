@@ -19,9 +19,6 @@ nombre = st.text_input("Nombre del curso")
 nivel = st.selectbox("Nivel del curso", ["básico", "intermedio", "avanzado"])
 publico = st.text_area("Público objetivo (Agregar Industria)")
 objetivos_raw = st.text_area("Objetivos del curso")
-siguiente = st.text_input("Nombre del siguiente curso sugerido", value="N/A")
-
-# 🔢 Nuevo input: número de clases
 num_clases = st.number_input(
     "Número de clases del curso",
     min_value=4,
@@ -30,6 +27,8 @@ num_clases = st.number_input(
     step=2,
     help="Selecciona cuántas clases tendrá el curso (afectará el outline y las clases generadas)."
 )
+siguiente = st.text_input("Nombre del siguiente curso sugerido", value="N/A")
+
 
 # ✅ NUEVO BLOQUE: Mostrar links si ya se generaron previamente
 if "link_syllabus" in st.session_state and "link_outline" in st.session_state:
