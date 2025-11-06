@@ -233,13 +233,13 @@ def generar_syllabus_completo(nombre_del_curso, nivel, objetivos_mejorados, publ
         body={"name": f"Syllabus - {nombre_del_curso}"}
     ).execute()
     document_id = template_copy["id"]
-    # 🔐 Dar acceso a todo el dominio datarebels.mx
+    # 🔐 Dar acceso a todo el dominio purpura.ai
     drive_service.permissions().create(
         fileId=document_id,
         body={
             "type": "domain",
             "role": "writer",      # Usa "reader" si solo quieres lectura
-            "domain": "datarebels.mx",
+            "domain": "purpura.ai",
             "allowFileDiscovery": True
         },
         fields="id"
@@ -283,7 +283,7 @@ def generar_outline_csv(nombre_del_curso, nivel, objetivos_mejorados, perfil_ing
     body={
         "type": "domain",
         "role": "writer",
-        "domain": "datarebels.mx",
+        "domain": "purpura.ai",
         "allowFileDiscovery": True
     },
     fields="id"
