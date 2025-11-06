@@ -27,7 +27,7 @@ Utiliza **Gemini gemini-2.0-flash-lite** para crear el contenido y se conecta co
 ## 🖥️ Demo (versión en Streamlit Cloud)
 
 > 💡 Puedes probar la app en línea:  
-> 👉 [https://syllabus-dr.streamlit.app](https://syllabus-dr.streamlit.app)
+> 👉([https://syllabus-purpura.streamlit.app](https://syllabus-purpura.streamlit.app/)) 
 
 ---
 
@@ -48,7 +48,7 @@ Utiliza **Gemini gemini-2.0-flash-lite** para crear el contenido y se conecta co
 
 1. **Clonar el repositorio**
    ```bash
-   git clone https://github.com/Datarebelsoficial/syllabus-streamlit.git
+   git clone https://github.com/purpura-ai/syllabus-streamlit.git
    cd syllabus-streamlit
 
 2. **Instalar dependencias**
@@ -63,7 +63,7 @@ pip install -r requirements.txt
 * GOOGLE_OAUTH_REDIRECT_URI = "http://localhost:8501/oauth2callback"
 
 4. **Probar en Streamlit**
-Iniciar sesión con una cuenta de @datarebels.mx
+Iniciar sesión con una cuenta de @purpura.ai
 
 
-_Creado por Melisa Lozano — @melisapurpura 💜 Desarrolladora y diseñadora de productos de datos en Data Rebels_
+_Creado por Melisa Lozano — @melisapurpura 💜 Desarrolladora y diseñadora de productos de datos en Purpura ai_
