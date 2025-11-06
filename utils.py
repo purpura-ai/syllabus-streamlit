@@ -90,7 +90,7 @@ docs_service, drive_service, sheets_service = build_services()
 # 🤖 GEMINI API
 # =========================
 def call_gemini(prompt: str) -> str:
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent"
     headers = {"Content-Type": "application/json"}
     params = {"key": st.secrets["GEMINI_API_KEY"]}
     data = {
@@ -155,12 +155,15 @@ def generar_datos_generales(nombre_del_curso, nivel, publico, student_persona, s
 
     | Clase | Título | Conceptos Clave | Objetivo 1 | Objetivo 2 | Objetivo 3 | Descripción |
     
-    Cada fila debe contener texto breve y específico (no listas ni viñetas).  
-    Los objetivos deben redactarse con verbos de acción (por ejemplo: "Aplicar", "Analizar", "Desarrollar", "Interpretar", etc.).  
-    Aegurate de escribir los 3 objetivos
-    Evita escribir "X" o dejar columnas vacías. 
-    No generes más ni menos clases que las indicadas.   
-    Asegúrate de que cada clase tenga al menos un objetivo redactado en una oración corta y clara.
+    Cada clase debe tener **todas las columnas llenas**, sin dejar ningún campo vacío.  
+    Cada “Objetivo” debe ser una oración breve (máx. 12 palabras) que comience con un verbo de acción (por ejemplo: “Analizar”, “Aplicar”, “Diseñar”, “Desarrollar”, “Evaluar”, etc.).  
+    Si un objetivo no aplica, reformúlalo para mantener tres objetivos por clase.  
+    No uses “X”, ni dejes celdas vacías.  
+    Ejemplo de formato esperado:
+
+    | Clase | Título | Conceptos Clave | Objetivo 1 | Objetivo 2 | Objetivo 3 | Descripción |
+    |-------|---------|----------------|-------------|-------------|-------------|--------------|
+    | 1 | Introducción a Gen AI para Creativos  | Modelos de Lenguaje, Difusión, ética | Identificar las aplicaciones de Gen AI en procesos creativos.  | Distinguir entre diferentes tipos de modelos de Gen AI.  | Analizar impactos éticos de la IA |Exploración del potencial de Gen AI en el sector retail y la importancia de su aplicación responsable.  |
     """
     respuesta = call_gemini(prompt)
 
