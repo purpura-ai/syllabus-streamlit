@@ -19,7 +19,7 @@ nombre = st.text_input("Nombre del curso")
 nivel = st.selectbox("Nivel del curso", ["básico", "intermedio", "avanzado"])
 publico = st.text_area("Público objetivo (Agregar Industria)")
 objetivos_raw = st.text_area("Objetivos del curso")
-num_clases = st.number_input("Número de clases del curso", min_value=4, max_value=24, value=12, step=2)
+num_clases = st.number_input("Número de clases del curso", min_value=4, max_value=24, value=12, step=1)
 siguiente = st.text_input("Nombre del siguiente curso sugerido", value="N/A")
 
 
