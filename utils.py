@@ -91,7 +91,7 @@ docs_service, drive_service, sheets_service = build_services()
 # =========================
 def call_gemini(prompt: str) -> str:
     # url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent"
-    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-001:generateContent"
+    url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
     headers = {"Content-Type": "application/json"}
     params = {"key": st.secrets["GEMINI_API_KEY"]}
     data = {
