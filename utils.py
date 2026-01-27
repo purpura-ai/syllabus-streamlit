@@ -96,7 +96,7 @@ def call_gemini(prompt: str) -> str:
     params = {"key": st.secrets["GEMINI_API_KEY"]}
     data = {
         "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {"maxOutputTokens": 3000},
+        "generationConfig": {"maxOutputTokens": 8192},
     }
 
     response = requests.post(url, headers=headers, params=params, json=data)
